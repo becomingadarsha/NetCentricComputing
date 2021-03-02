@@ -19,7 +19,7 @@ namespace WebApplication2.Controllers
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM tblStudent", conn);
             conn.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
+            SqlDataReader dr = cmd.ExecuteReader(); // data reader
 
             while (dr.Read())
             {
@@ -62,6 +62,98 @@ namespace WebApplication2.Controllers
             conn.Close();
 
             ViewBag.Message = "Student info inserted successfully.";
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            StudentViewModel student = new StudentViewModel();
+
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB; Integrated Security=True; Database=AchsDB");
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM tblStudent WHERE StudentId=@a", conn);
+            cmd.Parameters.AddWithValue("@a", id); // passing value of @a paramterer in the SqlCommand
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader(); // data reader
+
+            // adding the property readed from db to student obj
+            if (dr.Read()) // if there is data
+            {
+                student.StudentId = (int)dr["StudentId"];
+                student.FullName = (string)dr["FullName"];
+                student.Email = (string)dr["Email"];
+                student.Phone = (string)dr["Phone"];
+            }
+            dr.Close();
+            conn.Close();
+
+            return View(student);
+        }
+
+
+        [HttpPost]
+        public IActionResult Edit(StudentViewModel stu)
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB; Integrated Security=True; Database=AchsDB");
+            SqlCommand cmd = new SqlCommand("UPDATE tblStudent SET FullName=@a, Email=@b, Phone=@c WHERE StudentId=@d", conn);
+            cmd.Parameters.AddWithValue("@a", stu.FullName);
+            cmd.Parameters.AddWithValue("@b", stu.Email);
+            cmd.Parameters.AddWithValue("@c", stu.Phone);
+            cmd.Parameters.AddWithValue("@d", stu.StudentId);
+
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            ViewBag.Message = "Student info updated successfully.";
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            StudentViewModel student = new StudentViewModel();
+
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB; Integrated Security=True; Database=AchsDB");
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM tblStudent WHERE StudentId=@a", conn);
+            cmd.Parameters.AddWithValue("@a", id); // passing value of @a paramterer in the SqlCommand
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader(); // data reader
+
+            // adding the property readed from db to student obj
+            if (dr.Read()) // if there is data
+            {
+                student.StudentId = (int)dr["StudentId"];
+                student.FullName = (string)dr["FullName"];
+                student.Email = (string)dr["Email"];
+                student.Phone = (string)dr["Phone"];
+            }
+            dr.Close();
+            conn.Close();
+
+            return View(student);
+
+        }
+
+        [HttpPost]
+        public IActionResult Delete(StudentViewModel stu)
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB; Integrated Security=True; Database=AchsDB");
+            SqlCommand cmd = new SqlCommand("DELETE FROM tblStudent WHERE StudentId=@a", conn);
+            cmd.Parameters.AddWithValue("@a", stu.StudentId);
+
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            ViewBag.Message = "Student info deleted successfully.";
 
             return View();
         }

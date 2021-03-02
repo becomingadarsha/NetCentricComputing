@@ -117,3 +117,5 @@ C:\Users\adars\source\repos\WebApplication2\WebApplication2\bin\Debug\netcoreapp
 C:\Users\adars\source\repos\WebApplication2\WebApplication2\obj\Debug\netcoreapp3.1\Razor\Views\Student\Contact.cshtml.g.cs
 C:\Users\adars\source\repos\WebApplication2\WebApplication2\obj\Debug\netcoreapp3.1\Razor\Views\Student\Create.cshtml.g.cs
 C:\Users\adars\source\repos\WebApplication2\WebApplication2\obj\Debug\netcoreapp3.1\Razor\Views\Student\Index.cshtml.g.cs
+C:\Users\adars\source\repos\WebApplication2\WebApplication2\obj\Debug\netcoreapp3.1\Razor\Views\Student\Edit.cshtml.g.cs
+C:\Users\adars\source\repos\WebApplication2\WebApplication2\obj\Debug\netcoreapp3.1\Razor\Views\Student\Delete.cshtml.g.cs
