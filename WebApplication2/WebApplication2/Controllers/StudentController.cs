@@ -141,12 +141,12 @@ namespace WebApplication2.Controllers
 
         }
 
-        [HttpPost]
-        public IActionResult Delete(StudentViewModel stu)
+        [HttpPost, ActionName("Delete")]
+        public IActionResult Delete_Post(int id)
         {
             SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB; Integrated Security=True; Database=AchsDB");
             SqlCommand cmd = new SqlCommand("DELETE FROM tblStudent WHERE StudentId=@a", conn);
-            cmd.Parameters.AddWithValue("@a", stu.StudentId);
+            cmd.Parameters.AddWithValue("@a", id);
 
 
             conn.Open();
@@ -155,7 +155,7 @@ namespace WebApplication2.Controllers
 
             ViewBag.Message = "Student info deleted successfully.";
 
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
