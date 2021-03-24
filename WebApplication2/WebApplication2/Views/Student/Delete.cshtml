@@ -9,32 +9,38 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>StudentViewModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentId)
+            StudentId
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentId)
+            @Model.StudentId
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FullName)
+            @*@Html.DisplayNameFor(model => model.FullName)*@
+            FullName
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FullName)
+        <dd class="col-sm-10">
+            @Model.FullName
+            @*@Html.DisplayFor(model => model.FullName)*@
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+            Email
+            @*@Html.DisplayNameFor(model => model.Email)*@
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
+            @Model.Email
+            @*@Html.DisplayFor(model => model.Email)*@
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
+            Phone
+            @*@Html.DisplayNameFor(model => model.Phone)*@
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
+        <dd class="col-sm-10">
+            @Model.Phone
+
+            @*@Html.DisplayFor(model => model.Phone)*@
         </dd>
     </dl>
     

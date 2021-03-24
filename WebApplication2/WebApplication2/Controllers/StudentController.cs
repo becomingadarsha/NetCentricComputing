@@ -19,7 +19,7 @@ namespace WebApplication2.Controllers
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM tblStudent", conn);
             conn.Open();
-            SqlDataReader dr = cmd.ExecuteReader(); // data reader
+            SqlDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
             {
